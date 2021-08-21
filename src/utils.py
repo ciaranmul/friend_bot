@@ -14,6 +14,13 @@ def get_random_quote():
     
     return random.choice(quotes)
 
+def get_keywords_dict():
+    """ Returns a list of keywords that have corresponding responses """
+
+    with open(get_env("KEYWORD_RESPONSES", __file__), 'r') as keywords_file:
+        keywords_dict = json.load(keywords_file)
+
+    return keywords_dict
 
 def get_env(env_key, filepath):
     """ Get environment variables """
