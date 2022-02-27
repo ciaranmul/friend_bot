@@ -29,3 +29,25 @@ Friend bot is a discord bot that simulates your friends using a JSON file of quo
 API_KEY=[Your bot's token]
 DATA_FILE=[path to your json file]
 ```
+
+## Docker ##
+
+Friend Bot is available on [Docker Hub](https://hub.docker.com/repository/docker/ciaranmul/friend_bot).
+
+It can be used with docker-compose as follows:
+
+```
+version: '3'
+
+services:
+  friend-bot:
+    image: ciaranmul/friend_bot
+    container_name: friend_bot
+    restart: unless-stopped
+    volumes:
+      - [path to directory containing your datafile and keyword repsonses]:/usr/src/app/data
+    environment:
+      - API_KEY=[Your bot's token]
+      - DATA_FILE=data/quotes.json
+      - KEYWORD_RESPONSES=data/keywords_dict.json
+```
